@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ product.name }}</h1>
+
+<p>{{ product.description }}</p>
+
+<p>
+  {% if product.old_price %}
+    <span style="text-decoration:line-through">
+      {{ product.old_price }} тг
+    </span>
+  {% endif %}
+
+  <b>{{ product.price }} тг</b>
+</p>
+
+{% if product.stock > 0 %}
+  <p>✅ В наличии</p>
+{% else %}
+  <p>❌ Нет в наличии</p>
+{% endif %}
+
+<h3>Фото</h3>
+
+{% for img in product.images.all %}
+  <img src="{{ img.image.url }}">
+{% endfor %}
+
+{% endblock %}
