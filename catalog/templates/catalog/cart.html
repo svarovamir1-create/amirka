@@ -1,0 +1,22 @@
+<h2>Корзина</h2>
+
+{% if cart_items %}
+  {% for item in cart_items %}
+    <p>{{ item.product.name }}</p>
+    <p>Цена: {{ item.product.price }}</p>
+    <p>Количество: {{ item.quantity }}</p>
+
+    <a href="{% url 'catalog:increase' item.product.id %}">+</a>
+    <a href="{% url 'catalog:decrease' item.product.id %}">-</a>
+    <a href="{% url 'catalog:remove' item.product.id %}">Удалить</a>
+
+    <p>Сумма: {{ item.total }}</p>
+    <hr>
+  {% endfor %}
+
+  <h3>Итого: {{ total_sum }}</h3>
+  <p>Всего товаров: {{ total_quantity }}</p>
+  <p>Разных позиций: {{ total_positions }}</p>
+{% else %}
+  <p>Корзина пуста.</p>
+{% endif %}
