@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width:600px; margin:auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    <h1 style="text-align:center;">{% if object %}Редактировать{% else %}Создать{% endif %} пост</h1>
+
+    <form method="post" enctype="multipart/form-data" style="display:flex; flex-direction:column; gap:10px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="padding:10px; background:#3498db; color:white; border:none; border-radius:4px;">Сохранить</button>
+    </form>
+
+    <div style="margin-top:15px; text-align:center;">
+        <a href="{% url 'posts:list' %}" style="text-decoration:none; color:#3498db;">⬅ Назад к списку постов</a>
+    </div>
+</div>
+{% endblock %}
