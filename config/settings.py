@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'catalog',
     'orders',
      'posts',
+     'rest_framework',
+    'tasks',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +122,11 @@ LOGOUT_REDIRECT_URL = "/"
 STATIC_URL = 'static/'
 # Если папка static в корне проекта, добавь это:
 STATICFILES_DIRS = [BASE_DIR / "static"]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
